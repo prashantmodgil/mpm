@@ -1,0 +1,13 @@
+<h2>user account</h2>
+<h1>Account#index</h1>
+<p>Home page</p>
+<ul>
+    <li><a href="<%= root_path%>">Home</a></li>
+    <% if user_signed_in? %>
+    <li><%= link_to "SignOut",destroy_user_session_path,method: :delete%></li>
+    <%else%>
+    <li><a href="<%= new_user_registration_path%>">Sign up</a></li>
+    l<i><a href="<%= new_user_session_path%>">Sign in</a></li>
+    <%end%>
+</ul>
+<a href="/accounts/new" class="btn btn-info" role="button">New account</a>
