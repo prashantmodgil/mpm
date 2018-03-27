@@ -8,14 +8,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
   @user = User.new
   #@account = @user.accounts.build
-  byebug
+
   end
 
   # POST /resource
    def create
     # @name = params[:user][:name]
      super
-     byebug
+     #byebug
+      Account.create(name: params[:account_name], user_id: current_user.id)
    end
 
   # GET /resource/edit
