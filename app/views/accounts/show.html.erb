@@ -1,4 +1,5 @@
-<%= form_for @invitation, :as => :invitation do |f| %>
+<%= form_for(@invitation) do |f| %>
+  <%= hidden_field_tag :acc_id,params[:id] %>
   <div class="field">
     <%= f.label :invite_email %><br />
     <%= f.email_field :invite_email, autofocus: true   %>

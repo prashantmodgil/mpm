@@ -21,6 +21,8 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    @invitation =Invitation.new
+
   end
   private
     def account_params
