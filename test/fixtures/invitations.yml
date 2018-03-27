@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mem_id: 1
+  acc_id: 1
+  invite_email: MyString
+
+two:
+  mem_id: 1
+  acc_id: 1
+  invite_email: MyString

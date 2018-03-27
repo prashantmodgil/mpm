@@ -13,4 +13,7 @@
 <a href="/accounts/new" class="btn btn-info" role="button">New account</a>
 <% @accounts.each do |a|%>
      <li><%= a.name %></li><br>
+
+      <%= link_to 'Show',account_path(a) %>
+
 <%end%>

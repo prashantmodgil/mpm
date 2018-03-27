@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # @name = params[:user][:name]
      super
      #byebug
-      Account.create(name: params[:account_name], user_id: current_user.id)
+     Account.create(name: params[:account_name], user_id: current_user.id)
    end
 
   # GET /resource/edit
