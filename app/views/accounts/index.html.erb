@@ -7,7 +7,10 @@
     <li><%= link_to "SignOut",destroy_user_session_path,method: :delete%></li>
     <%else%>
     <li><a href="<%= new_user_registration_path%>">Sign up</a></li>
-    l<i><a href="<%= new_user_session_path%>">Sign in</a></li>
+    <li><a href="<%= new_user_session_path%>">Sign in</a></li>
     <%end%>
 </ul>
 <a href="/accounts/new" class="btn btn-info" role="button">New account</a>
+<% @accounts.each do |a|%>
+     <li><%= a.name %></li><br>
+<%end%>
