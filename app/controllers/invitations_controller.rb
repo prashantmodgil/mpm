@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   def new
+
     #@invitation =Invitation.new
   end
 
@@ -13,7 +14,7 @@ class InvitationsController < ApplicationController
         redirect_to new_user_registration_path(email: @invitation.invite_email,invitation_id: @invitation.id)
       else
         #if member_id is present send invitatuon account id
-        redirect_to account_path(@invitation.acc_id),notice: "Invitation Successfully Joined"
+        redirect_to account_path(@invitation.acc_id),notice: "Invitation Successfully join"
       end
     else
     end
@@ -33,11 +34,11 @@ class InvitationsController < ApplicationController
       end
 
       #logic for sending email
-      #invitation path of that inviatation id,invite email,accountid
+      #invitation path of that inviatation i.e. url,emailand account name
       InvitationMailer.invitation_mail(invitation_path(@invitation.id),params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name).deliver_now
       #if sent sucess message else will go to rescue meathod
       redirect_to account_path(params[:acc_id]),notice: "Invitation has sent to #{params[:invitation][:invite_email]}"
-    rescue Exception => e
+      rescue Exception => e
       #will show exception message againts message
       redirect_to account_path(params[:acc_id]),notice: "Something went wrong as #{e.message}"
     end
