@@ -6,28 +6,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-  @user = User.new
-  if params[:invitation_id]
-    @user.email = params[:email]
-    @invitation_id = params[:invitation_id]
-  else
-    @invitation_id = ''
-  end
-  #@account = @user.accounts.build
-
+    @user = User.new
+    #below logic when user is redirected from his email link
+      if params[:invitation_id]
+        #for automatically assign the email to user
+        @user.email = params[:email]
+        #saving invitation_id
+        @invitation_id = params[:invitation_id]
+      else
+        @invitation_id = ''
+      end
   end
 
   # POST /resource
    def create
     # @name = params[:user][:name]
      super
-     #byebug
-     if current_user
-       Account.create(name: params[:account_name], user_id: current_user.id)
-       if params[:invitation_id] != ''
-         Invitation.find(params[:invitation_id]).update(mem_id: current_user.id)
-       else
-       end
+      if current_user
+      #creats account after creation of user
+      Account.create(name: params[:account_name], user_id: current_user.id)
+          if params[:invitation_id] != ''
+          #run update query in invitation table i.e. it will put value in mem_id colum with current_user
+          Invitation.find(params[:invitation_id]).update(mem_id: current_user.id)
+           else
+         end
      end
    end
 

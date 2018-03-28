@@ -8,12 +8,14 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+<%if invitation_id.present%>
 
+<%else%>
 <div class="field">
 	<!-- f.fields_for :accounts do |u| %> -->
 	<%= f.label :account_name %><br/>
   <%= text_field_tag (:account_name) %>
-
+<%end%>
 </div>
 
   <div class="field">
