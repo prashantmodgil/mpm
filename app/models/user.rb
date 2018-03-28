@@ -3,14 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  #has_many :accounts
-  # accepts_nested_attributes_for :accounts
-  #attr_accessor :account_name
-  #after_create :account_create
+  after_create :account_create
+  attr_accessor :name
 
-  #private
-
-  #def account_create
-  #  self.accounts.create!(name: self.account_name)
-  #end
+  private
+  def account_create
+  Account.create(name: name, user_id: self.id)
+  end
 end
