@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   private
   def account_create
+    #not null
     if self.invitation_id != ''
       Invitation.where(id: self.invitation_id).where(invite_email: self.email).last.update(mem_id: self.id)
     else

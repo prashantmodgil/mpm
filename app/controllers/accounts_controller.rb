@@ -4,6 +4,8 @@ class AccountsController < ApplicationController
   def index
   #collective accounts of a perticualr user of whome he is admin
   @accounts = Account.where(user_id: current_user.id)
+  #@acc = Invitation.where(acc_id: currrent_user.id)
+  #@aa = Account.where(id: @acc.acc_id)
   end
 
   def new
@@ -31,7 +33,6 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     #declaring insatnce variable for invitation
     @invitation =Invitation.new
-
   end
   private
     def account_params

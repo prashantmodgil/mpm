@@ -11,9 +11,13 @@
     <%end%>
 </ul>
 <a href="/accounts/new" class="btn btn-info" role="button">New account</a>
+
+  <h2>owned accounts</h2>
 <% @accounts.each do |a|%>
      <li><%= a.name %></li><br>
 
       <%= link_to 'Show',account_path(a) %>
 
 <%end%>
+
+<h2>member accounts </h2>
