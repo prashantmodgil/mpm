@@ -14,7 +14,7 @@
 
   <h2>owned accounts</h2>
   <% if @accounts.present? %>
-<% @accounts.each do |a|%>
+  <% @accounts.each do |a|%>
      <li><%= a.name %></li><br>
 
       <%= link_to 'Show',account_path(a) %>

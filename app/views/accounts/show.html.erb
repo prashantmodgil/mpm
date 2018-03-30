@@ -1,4 +1,6 @@
-<%= form_for(@invitation) do |f| %>
+
+<%if @account.user_id == current_user.id%>
+  <%= form_for(@invitation) do |f| %>
   <%= hidden_field_tag :acc_id,params[:id] %>
   <div class="field">
     <%= f.label :invite_email %><br />
@@ -6,4 +8,9 @@
   </div>
     <%= f.submit "send invitation" %>
   </div>
+  <%end%>
+  <%end%>
+<h2>members of this account</h2>
+  <% @members.each do |f|%>
+    <ul> <%= f.email %><br></ul>
   <%end%>
