@@ -4,8 +4,8 @@ class AccountsController < ApplicationController
   def index
   #collective accounts of a perticualr user of whome he is admin
   @accounts = Account.where(user_id: current_user.id)
-  #@acc = Invitation.where(acc_id: currrent_user.id)
-  #@aa = Account.where(id: @acc.acc_id)
+  @invitation = Invitation.select(:acc_id).where(mem_id: current_user.id)
+  @aa = Account.where(id: @invitation)
   end
 
   def new
