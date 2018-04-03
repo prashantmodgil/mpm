@@ -5,15 +5,15 @@
 
     <div class= "row">
       <% if user_signed_in? %>
-        <div class = "col">
-          <kbd><%= link_to "SignOut",destroy_user_session_path,method: :delete%></kbd>
+        <div class = "col button">
+          <%= link_to "SignOut",destroy_user_session_path,method: :delete%>
         </div>
       <%else%>
-      <div class = "col">
-        <kbd><a href="<%= new_user_registration_path%>">Sign up</a></kbd>
+      <div class = "col button">
+        <%= link_to 'SignUp',new_user_registration_path%>
       </div>
-      <div class = "col">
-        <kbd><a href="<%= new_user_session_path%>">Sign in</a></kbd>
+      <div class = "col button">
+        <%= link_to 'SignIn',new_user_session_path%>
       </div>
       <%end%>
     </div>
