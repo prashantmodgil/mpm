@@ -3,12 +3,14 @@
   <%= form_for(@invitation) do |f| %>
   <%= hidden_field_tag :acc_id,params[:id] %>
   <div class="field">
-    <%= f.label :invite_email %><br />
-    <%= f.email_field :invite_email, autofocus: true   %>
+    <%= f.label :invite_email %><br>
+    <%= f.email_field :invite_email,class:"form-control", autofocus: true   %>
   </div>
     <%= f.submit "send invitation" %>
   </div>
   <%end%>
+    <a href="<%= 'account_teams' %>">Teams</a>
+
   <%end%>
 <h2>members of this account</h2>
   <% @members.each do |f|%>

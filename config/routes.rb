@@ -3,6 +3,8 @@
 
    devise_for :users, controllers:
    {registrations: 'users/registrations', sessions:'users/sessions'}
-   resources :accounts
+   resources :accounts do
+     resources :teams
+    end
    resources :invitations
   end

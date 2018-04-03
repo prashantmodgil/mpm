@@ -1,6 +1,5 @@
 class InvitationsController < ApplicationController
   def new
-
     #@invitation =Invitation.new
   end
 
@@ -13,7 +12,7 @@ class InvitationsController < ApplicationController
         #if the member_id is nil in invitationtable send email and invitation id as params
         redirect_to new_user_registration_path(email: @invitation.invite_email,invitation_id: @invitation.id)
       else
-        #if member_id is present send invitatuon account id
+        #if member_id is present send invitation account id
         redirect_to account_path(@invitation.acc_id),notice: "Invitation Successfully join"
       end
     else

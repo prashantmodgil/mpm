@@ -31,12 +31,13 @@ class AccountsController < ApplicationController
 
   def show
     #to show perticular account number
-    @account = Account.find(params[:id])
+    @account = Account.find(account_params[:id])
     #declaring insatnce variable for invitation
     @invitation =Invitation.new
     @temp = Invitation.select(:mem_id).where(acc_id: params[:id])
     @members = User.where(id: @temp)
-  
+    @team = Team.new
+
 
   end
   private
