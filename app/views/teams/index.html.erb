@@ -1,11 +1,11 @@
 <h1>Teams#index</h1>
 <p>Find me in app/views/teams/index.html.erb</p>
 
-<%= form_for(@team) do |f| %>
-<%= hiddden_feild_tag :acc_id, params[:account][:id] %>
+<%= form_for :team, url: account_teams_path(acc_id: params[:id]) do |f| %>
+
 <div class="field">
-  <%= f.label :team %><br>
-  <%= f.text_feild :name, class:"form-control", autofocus:true %>
+  Team_name: <%= f.text_field :name %><br />
+</div>
   <%= f.submit "create team"%>
 </div>
   <%end%>

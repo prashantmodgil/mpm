@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   def show
   end
   def create
-    @team = Team.create!(name: params[:name],acc_id: params[:account][:id])
+    @team = Team.create!(name: params[:name],acc_id: params[:id])
   if  @team.save
     redirect_to 'accounts[:id]'
   else
