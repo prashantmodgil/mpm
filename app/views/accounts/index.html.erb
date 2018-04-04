@@ -14,23 +14,18 @@
 
   <h2>owned accounts</h2>
   <% if @accounts.present? %>
-  <% @accounts.each do |a|%>
+     <% @accounts.each do |a|%>
      <li><%= a.name %></li><br>
-
       <%= link_to 'Show',account_path(a) %>
-
 <%end%>
 <% else %>
 <p>No Account is associate toyou </p>
 <%end%>
 <h2>member accounts </h2>
-
 <% if @aa.present? %>
 <% @aa.each do |a|%>
-   <li><%= a.name %></li><br>
-
-    <%= link_to 'Show',account_path(a) %>
-
+  <li><%= a.name %></li><br>
+  <%= link_to 'Show',account_path(a) %>
 <%end%>
 <% else %>
 <p>No Account is associate to you .</p>

@@ -38,7 +38,6 @@ class AccountsController < ApplicationController
     @members = User.where(id: @temp)
     @team = Team.new
 
-
   end
   private
     def account_params
