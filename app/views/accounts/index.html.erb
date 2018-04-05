@@ -4,6 +4,7 @@
 <ul>
     <li><a href="<%= root_path%>">Home</a></li>
     <% if user_signed_in? %>
+    <h3>loged in as <%=current_user.email%></h3>
     <li><%= link_to "SignOut",destroy_user_session_path,method: :delete%></li>
     <%else%>
     <li><a href="<%= new_user_registration_path%>">Sign up</a></li>

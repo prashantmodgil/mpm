@@ -22,6 +22,7 @@ class InvitationsController < ApplicationController
     #using exception handling
     begin
       #assigning invite email from invitatiion hash to variable email
+      if params[:invitation][:invite_email] != current_user.email
       email = params[:invitation][:invite_email]
       @user = User.find_by_email(email)
       if @user.present?
@@ -31,7 +32,7 @@ class InvitationsController < ApplicationController
         #if user not present then insert in account id and invite email feild
         @invitation = Invitation.create!(acc_id: params[:acc_id],invite_email: params[:invitation][:invite_email])
       end
-
+    end
       #logic for sending email
       #invitation path of that inviatation i.e. url,emailand account name
       InvitationMailer.invitation_mail(invitation_path(@invitation.id),params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name).deliver_now

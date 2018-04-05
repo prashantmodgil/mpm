@@ -1,5 +1,6 @@
 
 <%if @account.user_id == current_user.id%>
+<h3>loged in as <%=current_user.email%></h3>
   <%= form_for(@invitation) do |f| %>
   <%= hidden_field_tag :acc_id,params[:id] %>
   <div class="field">
