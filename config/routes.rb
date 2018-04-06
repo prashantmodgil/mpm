@@ -1,16 +1,12 @@
  Rails.application.routes.draw do
-  get 'team_members/index'
-
-  get 'team_members/create'
-
      root to: "welcome#index"
 
    devise_for :users, controllers:
    {registrations: 'users/registrations', sessions:'users/sessions'}
    resources :accounts do
      resources :teams
-
-    post '/member', to: 'teams#addmembers'
+    #post "check", to:"teams#check"
     end
+    post "addmember", to: "teams#addmember"
    resources :invitations
   end
