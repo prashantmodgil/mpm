@@ -17,8 +17,7 @@
   <h2>all teams </h2>
 
   <% @teams.each do |t| %>
-    <% if (t.acc_id) == (params[:account_id].to_i
-) %>
+    <% if (t.acc_id) == (params[:account_id].to_i) %>
 
           <%= t.name %>
           <%= link_to 'Show',account_team_path(params[:account_id],t.id) %>

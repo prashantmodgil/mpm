@@ -16,6 +16,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml'
+gem 'font-awesome-sass', '~> 5.0.6'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
