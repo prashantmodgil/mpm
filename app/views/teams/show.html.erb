@@ -2,9 +2,6 @@
 <p>Find me in app/views/teams/show.html.erb</p>
 <h2>Add from following members</h2>
 
-<% @members.each do |m| %>
-<%= m.email%><br>
-<%end%>
 
 <%= form_for @team_mem ,url: addmember_path(team_id: params[:id],acc_id: params[:account_id]) do |f| %>
 
@@ -27,3 +24,7 @@
   </table>
   <%= submit_tag "add" %>
 <% end %>
+
+<% @team_members.each do |m| %>
+<%= m.email%><br>
+<%end%>

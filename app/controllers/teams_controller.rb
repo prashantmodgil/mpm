@@ -10,6 +10,8 @@ class TeamsController < ApplicationController
     @temp = Invitation.select(:mem_id).where(acc_id: params[:account_id])
     @members = User.where(id: @temp)
     @team_mem = TeamMember.new
+    @tmid = TeamMember.select(:mem_id)
+    @team_members = User.where(id: @tmid)
   end
 
   def create
@@ -24,10 +26,10 @@ class TeamsController < ApplicationController
 
   def addmember
     @userids = params[:ids]
-    @userids.each do |a|
-    @team_mem = TeamMember.create(team_id: params[:team_id].to_i, mem_id: a.to_i)
+      @userids.each do |a|
+      @team_mem = TeamMember.create(team_id: params[:team_id].to_i, mem_id: a.to_i)
+    end
   end
-end
 
   private
   def team_params
