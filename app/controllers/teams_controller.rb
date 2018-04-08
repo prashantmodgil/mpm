@@ -2,7 +2,9 @@ class TeamsController < ApplicationController
 
   def index
     @team =Team.new
+    # new_team
     @teams = Team.all
+    # all_team
   end
 
   def show
