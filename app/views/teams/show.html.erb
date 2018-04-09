@@ -1,10 +1,10 @@
 <h1>Teams#show</h1>
 <p>Find me in app/views/teams/show.html.erb</p>
+
+<%if @members.present? %>
 <h2>Add from following members</h2>
 
-
 <%= form_for @team_mem ,url: addmember_path(team_id: params[:id],acc_id: params[:account_id]) do |f| %>
-
   <table>
     <thead>
       <tr>
@@ -14,17 +14,24 @@
     <tbody>
       <div class = "check_box">
         <label class ="checkbox inline">
+
       <% @members.each do |e| %>
       <tr>
         <td><%= e.email%></td>
         <td><%= check_box_tag "ids[]", e.id %></td>
       </tr>
       <% end %>
+</div>
     </tbody>
   </table>
   <%= submit_tag "add" %>
-<% end %>
+<%end%>
 
+<%else%>
+
+<h2>invite userto your account </h2>
+<%end%>
+<h2>All Team members</h2>
 <% @team_members.each do |m| %>
 <%= m.email%><br>
 <%end%>

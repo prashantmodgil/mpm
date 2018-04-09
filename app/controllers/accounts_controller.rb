@@ -3,10 +3,13 @@ class AccountsController < ApplicationController
 
   def index
   #collective accounts of a perticualr user of whome he is admin
-  @accounts = Account.where(user_id: current_user.id)
+  #@accounts = Account.where(user_id: current_user.id)
+     @accounts = Account.current_user_accounts(current_user)
   #stores all accounts in variable for current user
-  @invitation_acc = Invitation.select(:acc_id).where(mem_id: current_user.id)
+  #@invitation_acc = Invitation.select(:acc_id).where(mem_id: current_user.id)
+      @invitation_acc = Invitation.current_user_invitation(current_user)
   @aa = Account.where(id: @invitation_acc)
+#  @aa = Account.member_acc(current_user)
   end
 
   def new
@@ -19,6 +22,7 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params)
     #assigning current user_id to account user_id
     @account.user_id = current_user.id
+
     #redirection path
     if @account.save
       #all accounts of a user
@@ -34,7 +38,8 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     #declaring insatnce variable for invitation
     @invitation =Invitation.new
-    @temp = Invitation.select(:mem_id).where(acc_id: params[:id])
+    #@temp = Invitation.select(:mem_id).where(acc_id: params[:id])
+    @temp = Invitation.select_mem_id(params[:id])
     @members = User.where(id: @temp)
     @team = Team.new
 

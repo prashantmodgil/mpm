@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  before_action :authenticate_user!
   def new
     #@invitation =Invitation.new
   end
@@ -25,6 +26,7 @@ class InvitationsController < ApplicationController
       if params[:invitation][:invite_email] != current_user.email
       email = params[:invitation][:invite_email]
       @user = User.find_by_email(email)
+
       if @user.present?
         #if user present create inviatation with the parameters assignmenet
         @invitation = Invitation.create!(acc_id: params[:acc_id],mem_id: @user.id,invite_email: @user.email)

@@ -24,4 +24,17 @@
           <br>
 
     <%end%>
+    <%end%>
+
+    <h2>MyTeams</h2>
+    <%@my_teams.each do |t|%>
+    <ul>
+    <%=t.name%>
+    </ul>
+    <%end%>
+<h2>All Teams </h2>
+<%@other_teams.each do |t|%>
+<ul>
+<%= t.name %>
+</ul>
   <%end%>

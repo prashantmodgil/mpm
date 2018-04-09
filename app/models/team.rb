@@ -1,9 +1,5 @@
 class Team < ApplicationRecord
-  # def new_team
-  # @team = Team.new
-  # end
-  #
-  # def all_team
-  # @teams =Team.all
-  # end
- end
+  def self.my_teams(current_user)
+Team.where(user_id: current_user.id)
+  end
+end
