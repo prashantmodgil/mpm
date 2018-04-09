@@ -7,7 +7,7 @@
     </li>
     <% if user_signed_in? %>
     <li class="nav-item">
-      <a class="nav-link" href="destroy_user_session_path,method: :delete">SignOut</a>
+      <a class="nav-link" ,href: <%=link_to 'SignOut', destroy_user_session_path , method: :DELETE%></a>
     </li>
     <%else%>
     <li class="nav-item">
