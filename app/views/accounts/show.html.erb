@@ -1,4 +1,3 @@
-
 <%if @account.user_id == current_user.id%>
 <h3>loged in as <%=current_user.email%></h3>
   <%= form_for(@invitation) do |f| %>
@@ -11,7 +10,6 @@
   </div>
   <%end%>
     <a href="<%= account_teams_path(@account.id)%>">Teams</a>
-
   <%end%>
 <h2>members of this account</h2>
   <% @members.each do |f|%>

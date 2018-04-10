@@ -8,5 +8,4 @@ class Invitation < ApplicationRecord
   def self.current_account_mem_id(account_id)
   Invitation.select(:mem_id).where(acc_id: account_id)
   end
-  
 end

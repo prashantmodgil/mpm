@@ -17,11 +17,15 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml'
 gem 'font-awesome-sass', '~> 5.0.6'
+gem 'faker'
+gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+gem 'factory_girl', '~> 4.9'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec'
 end
 
 group :development do
