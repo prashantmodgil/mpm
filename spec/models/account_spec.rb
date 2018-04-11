@@ -5,5 +5,6 @@ RSpec.describe Account, type: :model do
    it "The owner_of_account method should return an Array" do
     account = Account.where(user_id: 1)
     expect(account).to be_an_instance_of(Array)
+    
       end
 end
