@@ -17,6 +17,7 @@ default: &default
   password: vagrant
 
 
+
   #socket: /var/lib/mysql/mysql.sock
 
 development:
