@@ -23,9 +23,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
-  gem 'factory_bot_rails', '~> 4.5'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'shoulda-matchers', '~> 3.0', require: false
-  #gem 'database_cleaner', '~> 1.5'
+  gem 'database_cleaner', '~> 1.5'
   gem 'faker'
   gem 'simplecov', require: false
 

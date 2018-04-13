@@ -7,8 +7,8 @@ class AccountsController < ApplicationController
      @accounts = Account.current_user_accounts(current_user)
   #stores all accounts in variable for current user
   #@invitation_acc = Invitation.select(:acc_id).where(mem_id: current_user.id)
-      @invitation_acc = Invitation.current_user_invitation(current_user)
-  @aa = Account.where(id: @invitation_acc)
+      #@invitation_acc = Invitation.current_user_invitation(current_user)
+  @aa = Account.where(id: Invitation.current_user_invitation(current_user))
 #  @aa = Account.member_acc(current_user)
   end
 
