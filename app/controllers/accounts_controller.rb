@@ -39,7 +39,7 @@ class AccountsController < ApplicationController
     #declaring insatnce variable for invitation
     @invitation =Invitation.new
     #@temp = Invitation.select(:mem_id).where(acc_id: params[:id])
-    @temp = Invitation.select_mem_id(params[:id])
+    @temp = Invitation.select_mem_id(params[:id])  
     @members = User.where(id: @temp)
     @team = Team.new
 

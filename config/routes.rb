@@ -8,5 +8,6 @@
     #post "check", to:"teams#check"
     end
     post "addmember", to: "teams#addmember"
-   resources :invitations
+    get "user_check", to: "invitations#user_check"
+    resources :invitations
   end

@@ -15,12 +15,12 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     #@temp = Invitation.select(:mem_id).where(acc_id: params[:account_id])
-    @temp = Invitation.current_account_mem_id(params[:account_id])
-    @members = User.where(id: @temp)
+    #@temp = Invitation.select_mem_id(params[:account_id])
+
+    @members = User.where(id: Invitation.select_mem_id(params[:account_id]))
     @team_mem = TeamMember.new
     @tmid = TeamMember.select(:mem_id)
     @team_members = User.where(id: @tmid)
-
   end
 
   def create

@@ -1,15 +1,14 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
-  def new
-    #@invitation =Invitation.new
-  end
+  # def new
+  #   @invitation =Invitation.new
+  # end
 
   def show
     id = params[:id]
     @invitation = Invitation.find(id)
     if @invitation.present?
       #redirect to invitation path
-      debugger
       if @invitation.mem_id == nil
         #if the member_id is nil in invitationtable send email and invitation id as params
         redirect_to new_user_registration_path(email: @invitation.invite_email,invitation_id: @invitation.id)
@@ -46,6 +45,9 @@ class InvitationsController < ApplicationController
       #will show exception message againts message
       redirect_to account_path(params[:acc_id]),notice: "Something went wrong as #{e.message}"
     end
+  end
+  def user_check
+
   end
   # private
   # def invite_params
