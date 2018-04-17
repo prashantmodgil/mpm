@@ -15,7 +15,7 @@
       <div class = "check_box">
         <label class ="checkbox inline">
 
-      <% @members.each do |e| %>
+      <% @remaining.each do |e| %>
       <tr>
         <td><%= e.email%></td>
         <td><%= check_box_tag "ids[]", e.id %></td>
@@ -34,4 +34,18 @@
 <h2>All Team members</h2>
 <% @team_members.each do |m| %>
 <%= m.email%><br>
+<%end%>
+
+
+<h2>chat messages</h2>
+<% @messages.each do |message| %>
+<div class="message">
+  <span class="message_timestamp">
+    <%= message.created_at %>
+  </span>
+  <span class="message_star"></span>
+  <span class="message_content">
+    <%= message.content %>
+  </span>
+</div>
 <%end%>

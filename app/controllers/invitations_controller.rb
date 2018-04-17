@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :authenticate_user!, :except => [:index]
+#  before_action :authenticate_user!, :except => [:index]
   # def new
   #   @invitation =Invitation.new
   # end
@@ -42,8 +42,7 @@ class InvitationsController < ApplicationController
 
       #InvitationMailer.invitation_mail(invitation_path(@invitation.id),params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name).deliver_now
 
-      InvitationMailer.invitation_mail(invitation_path(@invitation.id),params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name,@invitation.token).deliver_now
-
+      InvitationMailer.invitation_mail("#{user_check_path}?=",params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name,@invitation.token).deliver_now
       #if sent sucess message else will go to rescue meathod
       redirect_to account_path(params[:acc_id]),notice: "Invitation has sent to #{params[:invitation][:invite_email]}"
       rescue Exception => e
@@ -56,8 +55,10 @@ class InvitationsController < ApplicationController
 
 
   def user_check
-    id = params[:id]
-    @invitation = Invitation.find(id)
+    #id = params[:id]
+
+    @invitation = Invitation.find(@token)
+    debugger
     if @invitation.present?
       #redirect to invitation path
       if @invitation.mem_id == nil

@@ -10,4 +10,5 @@
     post "addmember", to: "teams#addmember"
     get "user_check", to: "invitations#user_check"
     resources :invitations
+    mount ActionCable.server => '/cable'
   end
