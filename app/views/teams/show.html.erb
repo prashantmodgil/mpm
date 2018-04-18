@@ -36,16 +36,6 @@
 <%= m.email%><br>
 <%end%>
 
-
 <h2>chat messages</h2>
-<% @messages.each do |message| %>
-<div class="message">
-  <span class="message_timestamp">
-    <%= message.created_at %>
-  </span>
-  <span class="message_star"></span>
-  <span class="message_content">
-    <%= message.content %>
-  </span>
+<div id="messages">
 </div>
-<%end%>
