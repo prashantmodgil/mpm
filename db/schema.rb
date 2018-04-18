@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20180417124615) do
     t.integer "user_id", null: false
   end
 
+  create_table "chats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "message"
+    t.integer "mem_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "mem_id"
     t.integer "acc_id", null: false
@@ -31,7 +39,7 @@ ActiveRecord::Schema.define(version: 20180417124615) do
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
-    t.integer "account_id"
+    t.integer "team_id"
     t.integer "mem_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
