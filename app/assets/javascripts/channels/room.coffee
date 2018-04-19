@@ -7,8 +7,9 @@ App.room = App.cable.subscriptions.create {
     # Called when the subscription has been terminated by the server
   received: (data)->
     $('#messages').append data.message
+
   speak: (message,team_id)->
-    @perform 'speak',message: message,team_id: team_id
+    @perform 'speak',message: message ,team_id: team_id
 
 $(document).on 'keypress', (event) ->
   team_id = $("#data").attr('data-value')

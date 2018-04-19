@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
     @tmid = TeamMember.team_id(@team)
     @team_members = User.where(id: @tmid)
     @remaining = @members - @team_members
-    @messages =Message.all
+    @messages =Message.where(team_id: @team)
 
   end
 
