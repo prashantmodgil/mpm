@@ -7,10 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-   <%if user_signed_in? %>
-    <h3>loged in as <%=current_user.email%></h3>
-    <%end%>
+  <body class ="<%= controller_name %> <%= action_name %>">
 	  <%= yield %>
 	  <p class="notice"><%= notice %></p>
 	  <p class="alert"><%= alert %></p>

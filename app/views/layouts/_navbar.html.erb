@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+      <% if !user_signed_in? %>
+    <li class="nav-item active">
+      <a class="nav-link" href="#"><i class="fa fa-home fa-fw"></i> Home</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="<%=new_user_session_path%>"><i class="fas fa-user-circle"></i></i>SignIn</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="<%=new_user_registration_path%>"><i class="fas fa-user-plus"></i>SignUp</a>
+    </li>
+      <%else%>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= url_for(destroy_user_session_path)%>"data-method="delete"><i class="fas fa-sign-out-alt"></i>Signout</a>
+    </li>
+    <%end%>
+  </ul>
+</nav>

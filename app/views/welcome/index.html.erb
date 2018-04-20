@@ -2,27 +2,4 @@
   <div class= "jumbotron text-center" >
     <h1>Welcome</h1>
   </div>
-
-    <div class= "row">
-      <% if user_signed_in? %>
-        <div class = "col button">
-          <%= link_to "SignOut",destroy_user_session_path,method: :delete%>
-        </div>
-      <%else%>
-      <div class = "col button">
-        <%= link_to 'SignUp',new_user_registration_path%>
-      </div>
-      <div class = "col button">
-        <%= link_to 'SignIn',new_user_session_path%>
-      </div>
-      <%end%>
-    </div>
-
-<p>With fixed width:</p>
-<div class="list-group">
-  <a href="#" class="list-group-item"><i class="fa fa-home fa-fw"></i> Home</a>
-  <a href="#" class="list-group-item"><i class="fa fa-book fa-fw"></i> Library</a>
-  <a href="#" class="list-group-item"><i class="fa fa-pencil fa-fw"></i> Applications</a>
-  <a href="#" class="list-group-item"><i class="fa fa-cog fa-fw"></i> Settings</a>
-</div>
-</div>
+<%=render 'layouts/navbar'%>

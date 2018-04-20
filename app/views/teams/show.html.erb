@@ -1,46 +1,44 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class= "container">
+<h2>Teams show page of <%= @team.name %></h2>
+  <%if @members.present? %>
+  <h2>Add from following members</h2>
+  <%= form_for @team_mem ,url: addmember_path(team_id: params[:id],acc_id: params[:account_id]) do |f| %>
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>check to Add</th>
+            </tr>
+          </thead>
+          <tbody>
+            <div class = "check_box">
+              <label class ="checkbox inline">
+                <% @remaining.each do |e| %>
+                <tr>
+                  <td><%= e.email%></td>
+                  <td><%= check_box_tag "ids[]", e.id %></td>
+                </tr>
+              <% end %>
+            </div>
+          </tbody>
+      </table>
+      <%= submit_tag "add" ,:class => "btn btn-success btn-mini"%>
+    <%end%>
+    <%else%>
+      <h2>invite userto your account </h2>
+  <%end%>
 
-<%if @members.present? %>
-<h2>Add from following members</h2>
+  <h2>All Team members</h2>
+    <% @team_members.each do |m| %>
+      <li class="list-group-item list-group-item-primary"> <%= m.email%></li>
+    <%end%>
 
-<%= form_for @team_mem ,url: addmember_path(team_id: params[:id],acc_id: params[:account_id]) do |f| %>
-  <table>
-    <thead>
-      <tr>
-        <th>email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <div class = "check_box">
-        <label class ="checkbox inline">
-
-      <% @remaining.each do |e| %>
-      <tr>
-        <td><%= e.email%></td>
-        <td><%= check_box_tag "ids[]", e.id %></td>
-      </tr>
-      <% end %>
+    <h2>Chat Box</h2>
+      <div id="messages">
+        <%= render @messages %>
+      </div>
+      <form>
+        <label>Say something:</label><br>
+        <input type="text" data-value = '<%=@team.id%>' id="data" class= "form-control">
+      </form>
 </div>
-    </tbody>
-  </table>
-  <%= submit_tag "add" %>
-<%end%>
-
-<%else%>
-
-<h2>invite userto your account </h2>
-<%end%>
-<h2>All Team members</h2>
-<% @team_members.each do |m| %>
-<%= m.email%><br>
-<%end%>
-
-<h2>chat messages</h2>
-<div id="messages">
-  <%= render @messages %>
-</div>
-<form>
-    <label>Say something:</label><br>
-    <input type="text" data-value = '<%=@team.id%>' id="data">
-</form>

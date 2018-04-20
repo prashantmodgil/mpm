@@ -1,18 +1,19 @@
-<%if @account.user_id == current_user.id%>
-  <h3>loged in as <%=current_user.email%></h3>
-    <%= form_for(@invitation) do |f| %>
-    <%= hidden_field_tag :acc_id,params[:id] %>
-    <div class="field">
-      <%= f.label :invite_email %><br>
-      <%= f.email_field :invite_email,class:"form-control", autofocus: true   %>
-    </div>
-      <%= f.submit "send invitation" %>
-    </div>
-    <%end%>
-  <%end%>
-    <a href="<%= account_teams_path(@account.id)%>">Teams</a>
+<div class = "container">
+  <h2>This is show page of <%=@account.name%> of <%=current_user.email%> </h2>
+    <%if @account.user_id == current_user.id%>
+      <%= form_for(@invitation) do |f| %>
+      <%= hidden_field_tag :acc_id,params[:id] %>
+      <div class="field">
+          <%= f.label :invite_email %><br>
+          <%= f.email_field :invite_email,class:"form-control", autofocus: true   %>
+        </div>
+          <%= f.submit "send invitation" ,:class => "btn btn-success btn-mini" %>
+        <%end%>
+      <%end%>
 
-<h2>members of this account</h2>
-  <% @members.each do |f|%>
-    <ul> <%= f.email %><br></ul>
-  <%end%>
+      <a href="<%= account_teams_path(@account.id)%>" class="btn btn-info" role="button">Teams of this account</a>
+      <h2>members of this account</h2>
+        <% @members.each do |f|%>
+            <li class="list-group-item list-group-item-primary"> <%= f.email %> </li>
+        <%end%>
+</div>
