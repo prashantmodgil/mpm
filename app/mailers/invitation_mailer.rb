@@ -1,8 +1,7 @@
 class InvitationMailer < ApplicationMailer
   default from: 'prashantdevelop@gmail.com'
 
-  def invitation_mail(url,email,account_name,token)
-    @url = "http://192.168.3.3:3000" + url + token
+  def invitation_mail(email,account_name,token)
     @email = email
     @account_name = account_name
     @token = token

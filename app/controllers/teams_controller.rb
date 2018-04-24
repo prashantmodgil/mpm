@@ -2,27 +2,19 @@ class TeamsController < ApplicationController
 #before_action :authenticate_user!
   def index
     @team =Team.new
-    # new_team
     @teams = Team.all
-    # all_team
-      #@my_teams = Team.where(user_id: current_user.id)
-      @my_teams = Team.my_teams(current_user)
-      #@temp = TeamMember.select(:team_id).where(mem_id: current_user.id)
-      @temp = TeamMember.select_team_id(current_user)
-      @other_teams = Team.where(id: @temp)
+    @my_teams = Team.my_teams(current_user)
+    @other_teams = Team.where(id: TeamMember.select_team_id(current_user))
   end
 
   def show
     @team = Team.find(params[:id])
-    #@temp = Invitation.select(:mem_id).where(acc_id: params[:account_id])
-    #@temp = Invitation.select_mem_id(params[:account_id])
     @members = User.where(id: Invitation.select_mem_id(params[:account_id]))
     @team_mem = TeamMember.new
     @tmid = TeamMember.team_id(@team)
     @team_members = User.where(id: @tmid)
     @remaining = @members - @team_members
     @messages =Message.where(team_id: @team)
-
   end
 
   def create
@@ -30,7 +22,6 @@ class TeamsController < ApplicationController
     @team.user_id = current_user.id
       if  @team.save
       redirect_to account_team_path(params[:account_id],@team.id)
-      #redirect_to account_path(params[:account_id])
     else
       redirect_to account_path(params[:account_id])
     end

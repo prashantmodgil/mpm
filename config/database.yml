@@ -16,8 +16,6 @@ default: &default
   username: root
   password: vagrant
 
-
-
   #socket: /var/lib/mysql/mysql.sock
 
 development:

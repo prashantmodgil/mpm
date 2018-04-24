@@ -1,57 +1,43 @@
-
 <div class = "container">
     <div class = "jumbotron text-center text-success ">
     <h2>Sign up to app</h2>
 </div>
-
  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 <form>
-      <%= f.hidden_field :invitation_id,value: params[:invitation_id] %>
-
-      <% if params[:invitation_id]%>
-
+      <%= f.hidden_field :token,value: params[:token] %>
+      <% if params[:token]%>
       <div class="form-group">
         <%= f.label :email %><br />
-        <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email",value: params[:email] %>
+        <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email",value:  get_email(params[:token]) %>
       </div>
-
     <%else%>
-
      <%= f.hidden_field :invitation_id,value: '' %>
-
       <div class="form-group">
     	<%= f.label :account_name %><br/>
       <%= f.text_field :name,class: "form-control", autofocus:true %>
       </div>
-
       <div class="form-group">
       <%= f.label :email %><br />
       <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
       </div>
-
     <% end%>
-
   <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
      <em>(<%= @minimum_password_length %> characters minimum)</em>
      <% end %><br />
-     <%= f.password_field :password,class: "form-control", autocomplete: "off",required: true %>
+     <%= f.password_field :password,class: "form-control", autocomplete: "on",required: true %>
   </div>
 
   <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation,class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password_confirmation,class: "form-control", autocomplete: "on" %>
   </div>
-
-
   <div class="action">
     <%= f.submit "Sign up",class: "form-control" %>
   </div>
-
  <% end %>
-
 </form>
 <div class ="button">
 <%= render "devise/shared/links"%>
