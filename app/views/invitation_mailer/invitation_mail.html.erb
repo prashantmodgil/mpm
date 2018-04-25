@@ -7,8 +7,9 @@
     <h1>Hello <%= @email %></h1>
     <p>
       You have invited to join Account name <%= @account_name %>,
-      please click on link to join : <%=  link_to "Accept Request","http://192.168.3.3:3000/user_check?token=#{@token}" , method: :get%>.<br>
+      please click on link to join : <%=  link_to "Accept Request", "http://192.168.3.3:3000/check?token=#{@token}" , method: :get%><br>
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>
 </html>
+ 

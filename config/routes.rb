@@ -8,7 +8,9 @@
     #post "check", to:"teams#check"
     end
     post "addmember", to: "teams#addmember"
-    get "user_check", to: "invitations#user_check"
+    #get "user_check", to: "invitations#user_check"
     resources :invitations
+    get "check", to: "invitations#user_check"
+
     mount ActionCable.server => '/cable'
   end

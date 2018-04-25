@@ -11,7 +11,7 @@ class InvitationsController < ApplicationController
         @invitation = Invitation.create!(acc_id: params[:acc_id],invite_email: params[:invitation][:invite_email])
       end
     end
-      InvitationMailer.invitation_mail(params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name,@invitation.token).deliver_now
+    InvitationMailer.invitation_mail(params[:invitation][:invite_email],Account.find(params[:acc_id].to_i).name,@invitation.token).deliver_now
       redirect_to account_path(params[:acc_id]),notice: "Invitation has sent to #{params[:invitation][:invite_email]}"
       rescue Exception => e
       redirect_to account_path(params[:acc_id]),notice: "Something went wrong as #{e.message}"
@@ -19,12 +19,13 @@ class InvitationsController < ApplicationController
   end
 
   def user_check
-    @invitation = Invitation.find_by(@token)
+    token = params[:token]
+    @invitation = Invitation.find_by_token(token)
     if @invitation.present?
       if @invitation.mem_id == nil
-        redirect_to new_user_registration_path(email: @invitation.invite_email,invitation_id: @invitation.id ,token: @invitation.token)
+        redirect_to new_user_registration_path(token: @invitation.token)
       else
-        redirect_to account_path(@invitation.acc_id, token:@invitation.token),notice: "Invitation Successfully join"
+        redirect_to account_path(@invitation.acc_id, token:@token),notice: "Invitation Successfully join"
       end
     else
     end
