@@ -1,9 +1,8 @@
 class AccountPolicy < ApplicationPolicy
    def show?
-     if (@record.@account.@members.include? user) || (@record.user_id == user.id)
+	if @record.user_id == user.id || Invitation.current_user_invitation(user) == record
+    debugger
        return true
      end
    end
-
-
 end
