@@ -23,8 +23,9 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    authorize @account
     @invitation =Invitation.new
-    @members = User.where(id: Invitation.select_mem_id(params[:id]))
+    @members = User.where(id: Invitation.select_mem_id(params[:id])).to_a
     @team = Team.new
   end
 

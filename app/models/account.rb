@@ -5,4 +5,8 @@ class Account < ApplicationRecord
   def self.current_user_accounts(current_user)
     Account.where(user_id: current_user.id)
   end
+
+  # def account_added_users
+  #   User.where(id: Invitation.select_mem_id([:id]))
+  # end
 end

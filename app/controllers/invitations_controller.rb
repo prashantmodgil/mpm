@@ -6,7 +6,7 @@ class InvitationsController < ApplicationController
       email = params[:invitation][:invite_email]
       @user = User.where(email: email)
       if @user.present?
-        @invitation = Invitation.create!(acc_id: params[:acc_id],mem_id: @user.id,invite_email: @user.email)
+        @invitation = Invitation.create!(acc_id: params[:acc_id],mem_id: @user.first.id,invite_email: @user.first.email)
       else
         @invitation = Invitation.create!(acc_id: params[:acc_id],invite_email: params[:invitation][:invite_email])
       end
