@@ -11,18 +11,11 @@
   </div>
   <%end%>
 
-  <h2>all teams </h2>
-  <% @teams.each do |t| %>
-    <% if (t.acc_id) == (params[:account_id].to_i) %>
-      <li class="list-group-item list-group-item-primary"> <%= t.name %> <a href ="<%= account_team_path(params[:account_id],t.id)%>"><i class="fas fa-eye"></i> </a></li>
-    <%end%>
-  <%end%>
-
-    <h2>MyTeams</h2>
+   <h2>MyTeams</h2>
     <% @my_teams.each do |t|%>
       <li class="list-group-item list-group-item-primary"> <%= t.name %> <a href ="<%= account_team_path(params[:account_id],t.id)%>"><i class="fas fa-eye"></i> </a></li>
     <%end%>
-  <h2> All Teams </h2>
+  <h2> Other Teams </h2>
   <% @other_teams.each do |t|%>
     <li class="list-group-item list-group-item-primary"> <%= t.name %> <a href ="<%= account_team_path(params[:account_id],t.id)%>"><i class="fas fa-eye"></i> </a></li>
   <%end%>

@@ -1,6 +1,8 @@
 class InvitationsController < ApplicationController
 #  before_action :authenticate_user!, :except => [:index]
   def create
+    @account = Account.find(params[:acc_id])
+    authorize @account, :invite?
     begin
       if params[:invitation][:invite_email] != current_user.email
       email = params[:invitation][:invite_email]
