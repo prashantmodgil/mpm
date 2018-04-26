@@ -1,11 +1,11 @@
 class AccountPolicy < ApplicationPolicy
    def show?
-     if @record.user_id == user.id || (Invitation.current_user_invitation(user).include? record.id)
+     if (@account.user_id == @user.id) || (Invitation.current_user_invitation(@user).include? @account.id)
       return true
      end
    end
    def invite?
-     if @record.user_id == user.id
+     if @account.user_id == user.id
        return true
    end
  end

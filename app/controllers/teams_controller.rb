@@ -37,10 +37,10 @@ class TeamsController < ApplicationController
       @userids = params[:ids]
         @userids.each do |a|
         @team_mem = TeamMember.create(team_id: params[:team_id].to_i, mem_id: a.to_i)
-        if @team_mem.save
-          redirect_to account_team_path(params[:team_id), notice: "Members Added"
-          else
-            redirect_to account_team_path(params[:team_id),notice: "Members NOT Added"
+        #if @team_mem.save
+          #redirect_to account_team_path(params[:team_id), notice: "Members Added"
+          #else
+          #  redirect_to account_team_path(params[:team_id),notice: "Members NOT Added"
       end
   end
 

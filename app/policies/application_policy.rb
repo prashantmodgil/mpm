@@ -1,10 +1,22 @@
 class ApplicationPolicy
-  attr_reader :user, :record
 
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
+  attr_reader :context,:record
+
+    def initialize(context,record)
+      @user = context.user
+      @account = context.account
+      @record = record
+    end
+
+    #delegate :current_user, to: :context
+    #delegate :current_account to: :context
+  #
+  # attr_reader :user, :record
+  #
+  # def initialize(user, record)
+  #   @user = user
+  #   @record = record
+  # end
 
   def index?
     false

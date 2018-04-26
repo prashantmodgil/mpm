@@ -1,10 +1,13 @@
 class TeamPolicy<ApplicationPolicy
 
 def show?
- record.user_id == user.id || TeamMember.where(mem_id: user.id)
+  if (record.user_id == @user.id) || (TeamMember.where(mem_id: @user.id))
+    return true
+  end
 end
 def addmember?
- record.user_id == user.id || TeamMember.where(mem_id: user.id)
-end
-
+ if (record.user_id == @user.id) || TeamMember.where(mem_id: @user.id)
+   return true
+  end
+ end
 end
