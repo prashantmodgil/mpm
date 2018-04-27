@@ -15,10 +15,10 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:body)
     end
     def set_commentable
-      if
+      #if parasms[:account_id]
 
-        @commentable = Team.find(params[:id])
-      elsif params[:id]
+      #  @commentable = Team.find(params[:id])
+      if params[:account_id].present?
         @commentable = Account.find(params[:id])
     end
 end
