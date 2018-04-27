@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180427073204) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -30,12 +30,11 @@ ActiveRecord::Schema.define(version: 20180427073204) do
 
   create_table "invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "mem_id"
-    t.integer "acc_id", null: false
-    t.string "invite_email", null: false
+    t.integer "acc_id"
+    t.string "invite_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "token"
-    t.index ["acc_id", "invite_email"], name: "index_invitations_on_acc_id_and_invite_email", unique: true
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

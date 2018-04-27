@@ -2,11 +2,10 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
    before_action :set_commentable
     def create
-      debugger
         @comment = @commentable.comments.new comment_params
-          @comment.user = current_user
+          @comment.user_id = current_user.id
           @comment.save
-              redirect_to @commentable, notice: "Your comment was successfully posted."
+          redirect_to @commentable, notice: "Your comment was successfully posted."
     end
   end
 
