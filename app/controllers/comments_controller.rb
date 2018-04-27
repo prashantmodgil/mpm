@@ -19,6 +19,6 @@ class CommentsController < ApplicationController
 
       #  @commentable = Team.find(params[:id])
       if params[:account_id].present?
-        @commentable = Account.find(params[:id])
+        @commentable = Account.find(params[:account_id])
     end
 end
