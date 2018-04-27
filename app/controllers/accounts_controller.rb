@@ -22,6 +22,7 @@ class AccountsController < ApplicationController
   end
 
   def show
+    debugger
     @account = Account.find(params[:id])
     authorize @account
     @invitation =Invitation.new
