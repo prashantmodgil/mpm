@@ -7,7 +7,7 @@ class Account < ApplicationRecord
     Account.where(user_id: current_user.id)
   end
 
-  # def account_added_users
-  #   User.where(id: Invitation.select_mem_id([:id]))
-  # end
+   # def self.member_accounts(current_user)
+   #   User.where(id: (Invitation.select_mem_id(current_user)))
+   # end
 end

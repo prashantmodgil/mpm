@@ -4,6 +4,7 @@ class AccountsController < ApplicationController
   def index
   @accounts = Account.current_user_accounts(current_user)
   @aa = Account.where(id: Invitation.current_user_invitation(current_user))
+   #@aa = Account.member_accounts(current_user.id)
   end
 
   def new
@@ -22,7 +23,6 @@ class AccountsController < ApplicationController
   end
 
   def show
-    debugger
     @account = Account.find(params[:id])
     authorize @account
     @invitation =Invitation.new
