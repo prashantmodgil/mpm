@@ -41,15 +41,14 @@
         <label>Say something:</label><br>
         <input type="text" data-value = '<%=@team.id%>' id="data" class= "form-control">
       </form>
+
       <h3>Comments</h3>
+    <%=render partial: "comments/comments", locals: {commentable: @team}%>
+    <%= form_for :comment , url: comments_path(account_id: @team.id) do |f|%>
+      <div>
+        <%= f.text_area :body, class: "form-control", placeholder:"Comment Here"%>
+      </div>
+    <%=f.submit class: "btn btn-primary"%>
+    <%end%>
 
-      <%=render partial: "comments/comments", locals: {commentable}%>
-
-      <%= form_for :comment , url: comments_path(team_id: @team.id) do |f|%>
-        <div class="form-group" >
-          <%= f.text_area :body, class: "form-control", placeholder:"Comment Here"%>
-        </div>
-      <%=f.submit class: "btn btn-primary"%>
-      <%end%>
-
-</div>
+  </div>
