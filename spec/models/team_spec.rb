@@ -6,8 +6,8 @@ RSpec.describe  Team, type: "model" do
       team1 =Team.create(name:"team1", acc_id: 2, user_id:user.id)
       team2 =Team.create(name:"team2" ,acc_id: 2, user_id:user.id)
       team3 =Team.create(name:"team3" ,acc_id: 2, user_id:user.id)
-      a = TeamMember.select(:team_id).where(mem_id: user.id)
-      tm = TeamMember.select_team_id(user)
+      a = Team.where(user_id: user.id)
+      tm = Team.my_teams(user)
       expect(a).to eq(tm)
     end
     it "shold not return all the teams of diffrent user " do
@@ -15,8 +15,8 @@ RSpec.describe  Team, type: "model" do
        team1 =Team.create(name:"team1", acc_id: 2, user_id:user.id)
        team2 =Team.create(name:"team2" ,acc_id: 2, user_id:user.id)
        team3 =Team.create(name:"team3" ,acc_id: 2, user_id:user.id)
-       a = TeamMember.select(:team_id).where(mem_id: (~user.id).abs)
-       tm = TeamMember.select_team_id(user)
+       a = Team.where(user_id: (~user.id).abs)
+       tm = Team.my_teams(user)
        expect(a).not_to eq(tm)
      end
 
